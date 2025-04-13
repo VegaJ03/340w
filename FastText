@@ -1,0 +1,90 @@
+import pandas as pd
+import numpy as np
+import string
+import re
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+from sklearn.metrics import classification_report, accuracy_score
+
+from gensim.models import FastText
+
+# Load dataset
+df = pd.read_csv('/kaggle/input/fake-news3/merged_file_no_duplicates2.csv')
+
+# Drop nulls
+df.dropna(subset=['text'], inplace=True)
+
+# Clean and preprocess text
+def clean_text(text):
+    text = text.lower()
+    text = re.sub('\[.*?\]', '', text)
+    text = re.sub("\\W", " ", text)
+    text = re.sub('https?://\S+|www\.\S+', '', text)
+    text = re.sub('<.*?>+', '', text)
+    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
+    text = re.sub('\w*\d\w*', '', text)
+    return text
+
+df['text'] = df['text'].apply(clean_text)
+
+# Features and labels
+X = df['text']
+y = df['label']
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
+
+# Tokenization
+X_train_tok = [text.split() for text in X_train]
+X_test_tok = [text.split() for text in X_test]
+
+# Train FastText model on training data
+ft_model = FastText(sentences=X_train_tok, vector_size=100, window=5, min_count=1, workers=4)
+
+# Function to get document embeddings
+def get_ft_vector(tokens, model):
+    vecs = [model.wv[word] for word in tokens if word in model.wv]
+    if len(vecs) == 0:
+        return np.zeros(model.vector_size)
+    return np.mean(vecs, axis=0)
+
+# Generate vectors
+xv_train = np.array([get_ft_vector(doc, ft_model) for doc in X_train_tok])
+xv_test = np.array([get_ft_vector(doc, ft_model) for doc in X_test_tok])
+
+# Logistic Regression
+print("=== Logistic Regression ===")
+lr_model = LogisticRegression()
+lr_model.fit(xv_train, y_train)
+y_pred_lr = lr_model.predict(xv_test)
+print("Accuracy:", accuracy_score(y_test, y_pred_lr))
+print(classification_report(y_test, y_pred_lr))
+
+# Decision Tree
+print("=== Decision Tree ===")
+dt_model = DecisionTreeClassifier()
+dt_model.fit(xv_train, y_train)
+y_pred_dt = dt_model.predict(xv_test)
+print("Accuracy:", accuracy_score(y_test, y_pred_dt))
+print(classification_report(y_test, y_pred_dt))
+
+# Random Forest
+print("=== Random Forest ===")
+rf_model = RandomForestClassifier()
+rf_model.fit(xv_train, y_train)
+y_pred_rf = rf_model.predict(xv_test)
+print("Accuracy:", accuracy_score(y_test, y_pred_rf))
+print(classification_report(y_test, y_pred_rf))
+
+# Gradient Boosting
+print("=== Gradient Boosting ===")
+gb_model = GradientBoostingClassifier()
+gb_model.fit(xv_train, y_train)
+y_pred_gb = gb_model.predict(xv_test)
+print("Accuracy:", accuracy_score(y_test, y_pred_gb))
+print(classification_report(y_test, y_pred_gb))
