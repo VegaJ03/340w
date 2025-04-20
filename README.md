@@ -43,9 +43,10 @@ Due to its large size, the files are only available via the OneDrive links provi
 To run the automated system to detect fake news successfully:
 1. Download the above files (dataset and GloVe).
 2. Download the code .ipynb file - "Final Code - Detect Fake News.ipynb"
-3. Update the file path in parts 1 and 3 of the code.
-4. Run the code.
-5. Observe the findings. 
+3. Download required models if needed. 
+4. Update the file path in parts 1 and 3 of the code.
+5. Run the code.
+6. Observe the findings. 
 
 ![part 1](https://github.com/user-attachments/assets/3d343cfb-856f-4473-a0d5-0240a296c289)
 ![part 3](https://github.com/user-attachments/assets/34891fec-77b2-4d1b-96d9-cb858cdd4e8c)
