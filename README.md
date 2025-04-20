@@ -21,7 +21,7 @@ Due to its large sizes, the files are only available via the OneDrive links prov
 Dataset: Download the dataset from "Dataset_onedrive_link.txt".
 GloVe: Download the file from "GloVe_onedrive_link.txt".
 
-# NOTE: change the Dataset and GloVe file in the code to your personal path to ensure code runs. 
+### NOTE: change the Dataset and GloVe file in the code to your personal path to ensure code runs. 
 
 ---
 
