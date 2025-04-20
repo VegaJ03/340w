@@ -17,12 +17,23 @@ Accuracy is used to measure the model performance.
 
 ## Installation
 
-Be sure to download the dataset and the word embedding technique (GloVe) files before running the code. The code would not be able to run otherwise. 
+This code was written and run on Kaggle without the use of any kind of accelerator.
+
+To run this project, make sure you have Python 3.7+ installed.
+
+You can install all required modules using the following command:
+
+###### pip install pandas numpy scipy nltk scikit-learn xgboost lightgbm matplotlib seaborn torch keras tensorflow
+
+
+Be sure to also download the dataset and the word embedding technique (GloVe) files before running the code. The code would not be able to run otherwise. 
 
 Due to its large size, the files are only available via the OneDrive links provided in the repository.
 
 - Dataset: Download the dataset from "Dataset_onedrive_link.txt".
 - GloVe: Download the file from "GloVe_onedrive_link.txt".
+
+![image](https://github.com/user-attachments/assets/c4a780b7-c6a2-49b4-83ef-692709c469a1)
 
 ### NOTE: change the Dataset and GloVe files in the code to your personal path to ensure the code runs. 
 
