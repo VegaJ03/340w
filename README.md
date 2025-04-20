@@ -19,11 +19,12 @@ Accuracy is used to measure the model performance.
 
 This code was written and run on Kaggle without the use of any kind of accelerator.
 
-To run this project, make sure you have Python 3.7+ installed.
+To run this project, make sure Python 3.7+ is installed.
 
-You can install all required modules using the following command:
+If not, install all required modules using the following command:
 
 ###### pip install pandas numpy scipy nltk scikit-learn xgboost lightgbm matplotlib seaborn torch keras tensorflow
+
 
 
 Be sure to also download the dataset and the word embedding technique (GloVe) files before running the code. The code would not be able to run otherwise. 
@@ -90,6 +91,12 @@ A confusion matrix is used to show the performance of the top 4 single and hybri
 
 #### Part 9 - Save and Print Results
 The results are saved to a .csv file. The results would show the evaluation of all models used, ordered by the model performance (best to worst). 
+
+---
+
+## Additional Notes
+
+Other files in the repository that are not needed to detect fake news are merely original files that are modified to create the finalized .ipynb file. 
 
 ---
 
