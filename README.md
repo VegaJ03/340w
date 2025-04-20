@@ -8,7 +8,9 @@ An automated system that helps users to detect fake news articles.
 ## Overview
 
 This code detects fake news through a text-based analysis, utilizing machine learning models and word embedding techniques. 
+
 Traditional machine learning and deep learning models are trained to classify the text as either fake or true. They are trained individually and as hybrid models.
+
 Accuracy is used to measure the model performance. 
 
 ---
@@ -16,10 +18,11 @@ Accuracy is used to measure the model performance.
 ## Installation
 
 Be sure to download the dataset and the word embedding technique (GloVe) files before running the code. The code would not be able to run otherwise. 
+
 Due to its large size, the files are only available via the OneDrive links provided in the repository.
 
-Dataset: Download the dataset from "Dataset_onedrive_link.txt".
-GloVe: Download the file from "GloVe_onedrive_link.txt".
+- Dataset: Download the dataset from "Dataset_onedrive_link.txt".
+- GloVe: Download the file from "GloVe_onedrive_link.txt".
 
 ### NOTE: change the Dataset and GloVe files in the code to your personal path to ensure the code runs. 
 
