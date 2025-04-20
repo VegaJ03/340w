@@ -23,9 +23,7 @@ To run this project, make sure Python 3.7+ is installed.
 
 If not, install all required modules using the following command:
 
-###### pip install pandas numpy scipy nltk scikit-learn xgboost lightgbm matplotlib seaborn torch keras tensorflow
-
-
+- ###### pip install pandas numpy scipy nltk scikit-learn xgboost lightgbm matplotlib seaborn torch keras tensorflow
 
 Be sure to also download the dataset and the word embedding technique (GloVe) files before running the code. The code would not be able to run otherwise. 
 
